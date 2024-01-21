@@ -1,0 +1,13 @@
+#nav{
+    padding: 10px;
+}
+
+#navBarSearchForm>input{
+    width:300px !important;
+}
+.bg-container{
+    background: url(backgroundimg.avif)no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+}
