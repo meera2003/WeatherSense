@@ -1,0 +1,97 @@
+To connect your login and registration form to MySQL using PHP, you'll need to perform the following steps:
+
+Set up your MySQL database: Create a MySQL database and a table to store user information such as username, email, and password.
+
+Create a PHP script to handle database operations: Write PHP scripts to handle user registration and login functionalities. These scripts will interact with your MySQL database to perform operations such as inserting new user data and verifying login credentials.
+
+Modify your HTML form: Update your HTML form to send user input data to the PHP scripts for processing. Add appropriate form action attributes to your form elements to specify the PHP scripts that will handle the form submissions.
+
+Here's a basic example of how you can modify your HTML form and create PHP scripts:
+
+HTML Form (index.html)
+
+<form action="register.php" method="post">
+    <!-- Registration form fields -->
+    <input type="text" name="firstname" placeholder="Firstname">
+    <input type="text" name="lastname" placeholder="Lastname">
+    <input type="text" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Register</button>
+</form>
+
+<form action="login.php" method="post">
+    <!-- Login form fields -->
+    <input type="text" name="username" placeholder="Username or Email">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Login</button>
+</form>
+
+
+PHP Script for Registration (register.php)
+
+<?php
+// Database connection
+$conn = new mysqli("localhost", "username", "password", "database");
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve form data
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+// Hash the password
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+// Insert user data into the database
+$sql = "INSERT INTO users (firstname, lastname, email, password) VALUES ('$firstname', '$lastname', '$email', '$hashed_password')";
+if ($conn->query($sql) === TRUE) {
+    echo "User registered successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
+
+
+PHP Script for Login (login.php)
+
+<?php
+// Database connection
+$conn = new mysqli("localhost", "username", "password", "database");
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve form data
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+// Retrieve user data from the database
+$sql = "SELECT * FROM users WHERE email='$username' OR username='$username'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // User found, verify password
+    $row = $result->fetch_assoc();
+    if (password_verify($password, $row['password'])) {
+        echo "Login successful";
+    } else {
+        echo "Invalid password";
+    }
+} else {
+    echo "User not found";
+}
+
+$conn->close();
+?>
+
+
+Replace "localhost", "username", "password", and "database" with your actual MySQL server details. Also, ensure that you sanitize user input data and use prepared statements to prevent SQL injection attacks.

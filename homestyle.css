@@ -1,0 +1,167 @@
+.image {
+    height: 420px;
+    width: 1350px;
+}
+
+#nav {
+    padding: 10px;
+}
+
+#navBarSearchForm>input {
+    width: 300px !important;
+}
+
+.container {
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    animation: fadeIn 1s ease-out;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateZ(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+.navbar {
+    background: rgba(219, 219, 227, 0.7) !important;
+}
+
+.jumbotron {
+    background: rgba(204, 197, 216, 0.618);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.btn-primary {
+    background-color: #3d89b8;
+    border-color: #3d89b8;
+}
+
+.btn-primary:hover {
+    background-color: #357ca5;
+    border-color: #357ca5;
+}
+
+.facts-container {
+    margin-top: 10px;
+    background: rgba(217, 206, 239, 0.618);
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+.fact {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+/*.carousel-inner{
+            height: 400px;
+            width: 300px; 
+        }*/
+.footer-container {
+    color: darkred;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media (min-width: 992px) {
+    .jumbotron {
+        margin-top: 200px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer {
+    background-color: black;
+    color: #fefefe;
+    position:inherit;
+    width: 100%;
+    height: 5%;
+    bottom: 0;
+    left: 0;
+    
+}
+
+.footer .heading {
+    color: #fefefe;
+    max-width: 1010px;
+    width: 90%;
+    text-transform: uppercase;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.footer .content {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem;
+}
+
+.footer .content p {
+    margin-bottom: 1.3rem;
+}
+
+.footer .content a {
+    text-decoration: none;
+    color: #fefefe;
+}
+
+.footer .content a:hover {
+    border-bottom: 3px dashed #3381cf;
+}
+
+.footer .content h4 {
+    margin-bottom: 1.3rem;
+    font-size: 19px;
+}
+
+footer {
+    text-align: center;
+}
+
+footer hr {
+    margin: 2rem 0;
+}
+
+@media (max-width: 767px) {
+    .footer .content {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+    }
+
+    .footer {
+        position: unset;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .footer .content,
+    .footer {
+        font-size: 14px;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .footer {
+        position: unset;
+    }
+}
